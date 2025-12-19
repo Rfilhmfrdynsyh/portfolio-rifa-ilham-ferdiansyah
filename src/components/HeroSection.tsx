@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Briefcase, MessageCircle } from "lucide-react";
 import { Button } from "./ui/button";
+import profileImage from "@/assets/profile.jpg";
 
 const HeroSection = () => {
   return (
@@ -47,73 +48,101 @@ const HeroSection = () => {
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-8"
-          >
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-sm text-muted-foreground">Available for opportunities</span>
-          </motion.div>
+        <div className="max-w-5xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
+            {/* Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="relative flex-shrink-0"
+            >
+              <div className="relative w-56 h-56 md:w-72 md:h-72">
+                {/* Glow Ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-60 blur-xl animate-pulse-slow" />
+                {/* Border Ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent p-1">
+                  <div className="w-full h-full rounded-full bg-background p-1">
+                    <img
+                      src={profileImage}
+                      alt="Rifa Ilham Ferdiansyah"
+                      className="w-full h-full rounded-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
 
-          {/* Name */}
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold mb-6"
-          >
-            <span className="text-foreground">Rifa Ilham</span>
-            <br />
-            <span className="text-gradient">Ferdiansyah</span>
-          </motion.h1>
+            {/* Content */}
+            <div className="text-center lg:text-left">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-secondary border border-border mb-6"
+              >
+                <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                <span className="text-sm text-muted-foreground">Available for opportunities</span>
+              </motion.div>
 
-          {/* Subtitle */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-4 font-light"
-          >
-            "Merging technical expertise with creative vision to deliver digital excellence."
-          </motion.p>
+              {/* Name */}
+              <motion.h1
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+              >
+                <span className="text-foreground">Rifa Ilham</span>
+                <br />
+                <span className="text-gradient">Ferdiansyah</span>
+              </motion.h1>
 
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-muted-foreground mb-10 max-w-2xl mx-auto"
-          >
-            Founder of{" "}
-            <span className="text-primary">Rifanidigitalstudio.my.id</span>,{" "}
-            <span className="text-primary">PT. Cendra Kreatif Nusantara</span>, and{" "}
-            <span className="text-primary">Family Protect</span>
-          </motion.p>
+              {/* Subtitle */}
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg md:text-xl text-muted-foreground mb-3 font-light"
+              >
+                "Merging technical expertise with creative vision to deliver digital excellence."
+              </motion.p>
 
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-          >
-            <Button variant="hero" size="xl" asChild>
-              <a href="#projects" className="gap-3">
-                <Briefcase className="w-5 h-5" />
-                View My Projects
-              </a>
-            </Button>
-            <Button variant="heroOutline" size="xl" asChild>
-              <a href="#contact" className="gap-3">
-                <MessageCircle className="w-5 h-5" />
-                Let's Connect
-              </a>
-            </Button>
-          </motion.div>
+              {/* Description */}
+              <motion.p
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="text-muted-foreground mb-8 max-w-xl"
+              >
+                Founder of{" "}
+                <span className="text-primary">Rifanidigitalstudio.my.id</span>,{" "}
+                <span className="text-primary">PT. Cendra Kreatif Nusantara</span>, and{" "}
+                <span className="text-primary">Family Protect</span>
+              </motion.p>
+
+              {/* CTA Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
+              >
+                <Button variant="hero" size="lg" asChild>
+                  <a href="#projects" className="gap-3">
+                    <Briefcase className="w-5 h-5" />
+                    View My Projects
+                  </a>
+                </Button>
+                <Button variant="heroOutline" size="lg" asChild>
+                  <a href="#contact" className="gap-3">
+                    <MessageCircle className="w-5 h-5" />
+                    Let's Connect
+                  </a>
+                </Button>
+              </motion.div>
+            </div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
