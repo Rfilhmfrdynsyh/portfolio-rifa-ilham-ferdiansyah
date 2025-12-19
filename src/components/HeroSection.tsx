@@ -49,32 +49,9 @@ const HeroSection = () => {
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
-            {/* Profile Image */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
-              className="relative flex-shrink-0"
-            >
-              <div className="relative w-56 h-56 md:w-72 md:h-72">
-                {/* Glow Ring */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-60 blur-xl animate-pulse-slow" />
-                {/* Border Ring */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent p-1">
-                  <div className="w-full h-full rounded-full bg-background p-1">
-                    <img
-                      src={profileImage}
-                      alt="Rifa Ilham Ferdiansyah"
-                      className="w-full h-full rounded-full object-cover object-top"
-                    />
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
+          <div className="flex flex-col-reverse lg:flex-row items-center gap-10 lg:gap-16">
             {/* Content */}
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-left flex-1">
               {/* Badge */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -116,9 +93,9 @@ const HeroSection = () => {
                 className="text-muted-foreground mb-8 max-w-xl"
               >
                 Founder of{" "}
-                <span className="text-primary">Rifanidigitalstudio.my.id</span>,{" "}
-                <span className="text-primary">PT. Cendra Kreatif Nusantara</span>, and{" "}
-                <span className="text-primary">Family Protect</span>
+                <span className="text-primary">Rifanidigitalstudio.my.id</span> –{" "}
+                Founder <span className="text-primary">PT. Cendra Kreatif Nusantara</span> –{" "}
+                and Founder <span className="text-primary">Family Protect</span>
               </motion.p>
 
               {/* CTA Buttons */}
@@ -142,6 +119,29 @@ const HeroSection = () => {
                 </Button>
               </motion.div>
             </div>
+
+            {/* Profile Image */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6 }}
+              className="relative flex-shrink-0"
+            >
+              <div className="relative w-56 h-56 md:w-72 md:h-72">
+                {/* Glow Ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-60 blur-xl animate-pulse-slow" />
+                {/* Border Ring */}
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent p-1">
+                  <div className="w-full h-full rounded-full bg-background p-1">
+                    <img
+                      src={profileImage}
+                      alt="Rifa Ilham Ferdiansyah"
+                      className="w-full h-full rounded-full object-cover object-top"
+                    />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
 
