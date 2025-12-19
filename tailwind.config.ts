@@ -15,7 +15,7 @@ export default {
   	extend: {
   		fontFamily: {
   			sans: [
-  				'Lato',
+  				'Inter',
   				'ui-sans-serif',
   				'system-ui',
   				'-apple-system',
@@ -32,7 +32,7 @@ export default {
   				'sans-serif'
   			],
   			serif: [
-  				'EB Garamond',
+  				'Lora',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
@@ -41,7 +41,7 @@ export default {
   				'serif'
   			],
   			mono: [
-  				'Fira Code',
+  				'Space Mono',
   				'ui-monospace',
   				'SFMono-Regular',
   				'Menlo',
@@ -131,7 +131,7 @@ export default {
   					transform: 'scale(1.05)'
   				}
   			},
-  			'float': {
+  			float: {
   				'0%, 100%': {
   					transform: 'translateY(0)'
   				},
@@ -145,7 +145,7 @@ export default {
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			'gradient-shift': 'gradient-shift 8s ease infinite',
   			'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
-  			'float': 'float 6s ease-in-out infinite'
+  			float: 'float 6s ease-in-out infinite'
   		},
   		backgroundSize: {
   			'400%': '400% 400%'
