@@ -1,50 +1,159 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, Briefcase, MessageCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import profileImage from "@/assets/profile.jpg";
+import { useRef } from "react";
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  });
+
+  // Parallax transforms for different layers
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 250]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">
-      {/* Animated Background Elements */}
+    <section ref={sectionRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">
+      {/* Parallax Background Elements */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* Gradient Orbs */}
+        {/* Floating Particles Layer 1 - Slowest */}
         <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.3, 0.5, 0.3],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
-        />
+          style={{ y: y1, opacity }}
+          className="absolute inset-0"
+        >
+          {[...Array(6)].map((_, i) => (
+            <motion.div
+              key={`particle-1-${i}`}
+              animate={{
+                y: [0, -20, 0],
+                x: [0, 10, 0],
+              }}
+              transition={{
+                duration: 5 + i,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.5,
+              }}
+              className="absolute w-2 h-2 bg-primary/30 rounded-full blur-sm"
+              style={{
+                top: `${15 + i * 15}%`,
+                left: `${10 + i * 15}%`,
+              }}
+            />
+          ))}
+        </motion.div>
+
+        {/* Gradient Orbs Layer 2 - Medium speed */}
         <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl"
-        />
+          style={{ y: y2, opacity }}
+          className="absolute inset-0"
+        >
+          <motion.div
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1.2, 1, 1.2],
+              opacity: [0.2, 0.4, 0.2],
+              rotate: [360, 180, 0],
+            }}
+            transition={{
+              duration: 15,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-accent/15 rounded-full blur-3xl"
+          />
+          <motion.div
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.15, 0.25, 0.15],
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/10 rounded-full blur-3xl"
+          />
+        </motion.div>
+
+        {/* Floating Particles Layer 3 - Fastest */}
+        <motion.div
+          style={{ y: y3, opacity }}
+          className="absolute inset-0"
+        >
+          {[...Array(8)].map((_, i) => (
+            <motion.div
+              key={`particle-3-${i}`}
+              animate={{
+                y: [0, -30, 0],
+                opacity: [0.3, 0.8, 0.3],
+              }}
+              transition={{
+                duration: 3 + i * 0.5,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.3,
+              }}
+              className="absolute w-1 h-1 bg-accent/50 rounded-full"
+              style={{
+                top: `${20 + i * 10}%`,
+                right: `${5 + i * 12}%`,
+              }}
+            />
+          ))}
+        </motion.div>
         
-        {/* Grid Pattern */}
-        <div 
+        {/* Grid Pattern - Static but with fade on scroll */}
+        <motion.div 
+          style={{ opacity }}
           className="absolute inset-0 opacity-[0.02]"
-          style={{
-            backgroundImage: `
-              linear-gradient(hsl(var(--primary)/0.3) 1px, transparent 1px),
-              linear-gradient(90deg, hsl(var(--primary)/0.3) 1px, transparent 1px)
-            `,
-            backgroundSize: '60px 60px'
-          }}
-        />
+        >
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(hsl(var(--primary)/0.3) 1px, transparent 1px),
+                linear-gradient(90deg, hsl(var(--primary)/0.3) 1px, transparent 1px)
+              `,
+              backgroundSize: '60px 60px'
+            }}
+          />
+        </motion.div>
+
+        {/* Diagonal Lines Layer */}
+        <motion.div
+          style={{ y: y1, opacity }}
+          className="absolute inset-0 overflow-hidden"
+        >
+          <div className="absolute -top-1/2 -left-1/4 w-[150%] h-[200%] opacity-[0.015]"
+            style={{
+              backgroundImage: `repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 100px,
+                hsl(var(--primary)) 100px,
+                hsl(var(--primary)) 101px
+              )`
+            }}
+          />
+        </motion.div>
       </div>
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
