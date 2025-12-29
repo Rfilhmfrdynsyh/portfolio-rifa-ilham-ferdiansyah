@@ -3,9 +3,9 @@ import { ExternalLink, Eye, Folder } from "lucide-react";
 import { Button } from "./ui/button";
 import AnimatedSection from "./AnimatedSection";
 
-import projectDigitalStudio from "@/assets/project-digital-studio.jpg";
-import projectCorporate from "@/assets/project-corporate.jpg";
-import projectFamilyProtect from "@/assets/project-family-protect.jpg";
+import projectDigitalStudio from "@/assets/project-digital-studio.png";
+import projectCorporate from "@/assets/project-corporate.png";
+import projectFamilyProtect from "@/assets/project-family-protect.png";
 
 const projects = [
   {
