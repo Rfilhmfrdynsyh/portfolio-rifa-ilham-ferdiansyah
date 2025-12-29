@@ -58,13 +58,13 @@ const ProjectsSection = () => {
                 className="group glow-border overflow-hidden h-full flex flex-col"
               >
                 {/* Image */}
-                <div className="relative aspect-video overflow-hidden bg-secondary">
+                <div className="relative aspect-square overflow-hidden bg-card flex items-center justify-center p-6">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-card/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
                     <div className="flex gap-3">
                       <Button variant="hero" size="sm" asChild>
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
