@@ -231,23 +231,22 @@ const HeroSection = () => {
 
             {/* Profile Image */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6 }}
+              initial={{ opacity: 0, scale: 0.8, x: 50 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.7 }}
               className="relative flex-shrink-0"
             >
-              <div className="relative w-56 h-56 md:w-72 md:h-72">
-                {/* Glow Ring */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary via-accent to-primary opacity-60 blur-xl animate-pulse-slow" />
-                {/* Border Ring */}
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary to-accent p-1">
-                  <div className="w-full h-full rounded-full bg-background p-1">
-                    <img
-                      src={profileImage}
-                      alt="Rifa Ilham Ferdiansyah"
-                      className="w-full h-full rounded-full object-cover object-top"
-                    />
-                  </div>
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                {/* Glow Effect */}
+                <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary/40 rounded-full blur-2xl" />
+                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 via-transparent to-accent/20 opacity-60 blur-xl" />
+                {/* Image Container */}
+                <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-primary/20">
+                  <img
+                    src={profileImage}
+                    alt="Rifa Ilham Ferdiansyah"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
               </div>
             </motion.div>
